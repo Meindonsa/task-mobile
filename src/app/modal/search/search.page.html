@@ -1,0 +1,25 @@
+<ion-header collapse="fade">
+  <ion-toolbar>
+    <ion-searchbar
+      class="mt-3"
+      [debounce]="1000"
+      [debounce]="1000"
+      (ionInput)="handleSearch($event)"
+    ></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list mode="ios" class="mt-3" *ngIf="tasks.length>0">
+    <app-task-element
+      *ngFor="let task of tasks"
+      [task]="task"
+    ></app-task-element>
+  </ion-list>
+  <ion-list mode="ios" class="mt-3" *ngIf="tasks.length>0">
+    <app-task-element
+      *ngFor="let task of tasks"
+      [task]="task"
+    ></app-task-element>
+  </ion-list>
+</ion-content>

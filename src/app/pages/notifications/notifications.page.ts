@@ -3,12 +3,12 @@ import { UtilService } from 'src/app/services/common/util/util.service';
 import { TaskService } from 'src/app/services/tasks/task.service';
 
 @Component({
-  selector: 'app-groups',
-  templateUrl: 'groups.page.html',
-  styleUrls: ['groups.page.scss'],
+  selector: 'app-notifications',
+  templateUrl: 'notifications.page.html',
+  styleUrls: ['notifications.page.scss'],
 })
-export class GroupsPage implements OnInit {
-  groups: any = [];
+export class NotificationsPage implements OnInit {
+  notifications: any = [];
   showProgressBar = false;
 
   constructor(
@@ -20,10 +20,6 @@ export class GroupsPage implements OnInit {
     this.init();
   }
 
-  getTotalPrice(tasks: any) {
-    return this.utilService.getTotalFolderPrice(tasks);
-  }
-
   handleRefresh(event: any) {
     this.showProgressBar = true;
     setTimeout(() => {
@@ -32,10 +28,10 @@ export class GroupsPage implements OnInit {
     }, 2000);
   }
 
-  init() {
+  async init() {
     this.showProgressBar = true;
-    setTimeout(() => {
-      this.groups = this.taskService.retrieveFolders();
+    await setTimeout(() => {
+      this.notifications = this.taskService.retrieveTasks();
       this.showProgressBar = false;
     }, 2000);
   }

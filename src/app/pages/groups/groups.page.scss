@@ -1,0 +1,36 @@
+ion-card {
+  ion-col.logoConainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: var(--primary);
+  }
+
+  ion-card-subtitle {
+    color: var(--primary);
+    font-weight: bold;
+  }
+
+  span {
+    font-size: 0.8rem;
+  }
+}
+
+span.truncat-description {
+  text-align: left;
+  font-size: 12px;
+  height: 35px;
+  max-height: 35px;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+div.indicator-poucent {
+  width: 100px;
+  min-height: 1px;
+  max-height: 1px;
+  background-color: var(--primary);
+}

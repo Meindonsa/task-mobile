@@ -2,9 +2,9 @@ import { IonicModule } from '@ionic/angular';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { GroupsPage } from './groups.page';
+import { NotificationsPage } from './notifications.page';
 
-import { GroupsPageRoutingModule } from './groups-routing.module';
+import { NotificationsPageRoutingModule } from './notifications-routing.module';
 import { ComponentModule } from 'src/app/components/component.module';
 
 @NgModule({
@@ -12,9 +12,9 @@ import { ComponentModule } from 'src/app/components/component.module';
     IonicModule,
     CommonModule,
     FormsModule,
-    GroupsPageRoutingModule,
     ComponentModule,
+    NotificationsPageRoutingModule,
   ],
-  declarations: [GroupsPage],
+  declarations: [NotificationsPage],
 })
-export class GroupsPageModule {}
+export class NotificationsPageModule {}

@@ -1,20 +1,22 @@
-import { IonicModule } from '@ionic/angular';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { GroupsPage } from './groups.page';
 
-import { GroupsPageRoutingModule } from './groups-routing.module';
+import { IonicModule } from '@ionic/angular';
+
+import { SearchPageRoutingModule } from './search-routing.module';
+
+import { SearchPage } from './search.page';
 import { ComponentModule } from 'src/app/components/component.module';
 
 @NgModule({
   imports: [
-    IonicModule,
     CommonModule,
     FormsModule,
-    GroupsPageRoutingModule,
+    IonicModule,
     ComponentModule,
+    SearchPageRoutingModule,
   ],
-  declarations: [GroupsPage],
+  declarations: [SearchPage],
 })
-export class GroupsPageModule {}
+export class SearchPageModule {}

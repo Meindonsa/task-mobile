@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { UtilService } from 'src/app/services/common/util/util.service';
 
 @Component({
   selector: 'app-swipper-slide',
@@ -7,21 +8,16 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class SwipperSlideComponent implements OnInit {
   @Input('folders') folders: any;
-  constructor() {}
 
-  ngOnInit() {
-    console.log(this.folders);
-  }
+  constructor(private utilService: UtilService) {}
+
+  ngOnInit() {}
 
   swiperSlideChanged(event: any) {
     // console.log(event);
   }
 
   getTotalPrice(tasks: any) {
-    let totalPrice = 0;
-    tasks.forEach((element: any) => {
-      totalPrice += element.price;
-    });
-    return totalPrice;
+    return this.utilService.getTotalFolderPrice(tasks);
   }
 }
