@@ -5,7 +5,9 @@
       aria-label="Toggle Label without visible text"
     ></ion-checkbox>
     <ion-label>{{ task.label }}</ion-label>
-    <ion-text slot="end">{{ task.date }}</ion-text>
+    <ion-text slot="end"
+      ><small>{{ task.price }} Fcfa</small></ion-text
+    >
   </ion-item>
   <ion-item-options>
     <ion-item-option color="danger" expandable

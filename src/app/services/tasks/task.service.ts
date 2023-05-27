@@ -49,6 +49,8 @@ export class TaskService {
     {
       folderNumber: 'e1k3g',
       name: 'Marché',
+      description:
+        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta recusandae',
       status: FolderStatus.CREATE,
       tasks: [
         {
@@ -98,6 +100,8 @@ export class TaskService {
     {
       folderNumber: 'i7w4y',
       name: 'Séries',
+      description:
+        'quibusdam illo iusto, magni doloremque consectetur maiores sit asperiores ullam atque vero necessitatibus',
       type: Folder.TASK_GROUP,
       status: FolderStatus.CREATE,
       tasks: [
@@ -148,6 +152,7 @@ export class TaskService {
     {
       folderNumber: 'o4c5n',
       name: 'Films',
+      description: 'Amet consectetur adipisicing elit. Dicta recusandae',
       type: Folder.TASK_GROUP,
       status: FolderStatus.CREATE,
       tasks: [
@@ -198,6 +203,7 @@ export class TaskService {
     {
       folderNumber: 't3f9j',
       name: 'Animés',
+      description: 'Maiores sit asperiores ullam atque vero necessitatibus',
       type: Folder.TASK_GROUP,
       status: FolderStatus.CREATE,
       tasks: [
@@ -248,6 +254,7 @@ export class TaskService {
     {
       folderNumber: 'x6s2h',
       name: 'Loving',
+      description: 'Adipisicing elitero necessitatibus',
       type: Folder.TASK_GROUP,
       status: FolderStatus.CREATE,
       tasks: [
@@ -298,6 +305,8 @@ export class TaskService {
     {
       folderNumber: 'z9n8c',
       name: 'Préférée',
+      description:
+        'To, magni doloremque consectetur maiores sit necessitatibus',
       type: Folder.TASK_GROUP,
       status: FolderStatus.CREATE,
       tasks: [
@@ -348,26 +357,33 @@ export class TaskService {
     {
       folderNumber: 'f0iB3R',
       name: 'Cours',
+      description: 'Maiores sit asperiores ullam atque vero necessitatibus',
       type: Folder.NOTE_GROUP,
       status: FolderStatus.CREATE,
+      tasks: [],
     },
     {
       folderNumber: 'c0Ur1n',
       name: 'Journal',
       type: Folder.NOTE_GROUP,
       status: FolderStatus.DELETED,
+      tasks: [],
     },
     {
       folderNumber: 'h0TBpS',
       name: 'HTTP',
+      description: 'Maiores sit asperiores ullam atque vero necessitatibus',
       type: Folder.NOTE_GROUP,
       status: FolderStatus.CREATE,
+      tasks: [],
     },
     {
       folderNumber: 'n0v1r0',
       name: 'Nuclino',
+      description: 'Maiores sit asperiores ullam atque vero necessitatibus',
       type: Folder.NOTE_GROUP,
       status: FolderStatus.CREATE,
+      tasks: [],
     },
   ];
 
@@ -377,7 +393,7 @@ export class TaskService {
       label: 'Manger',
       status: TaskStatus.DONE,
       date: '23 Avril',
-      price: 9000,
+      price: 5625,
     },
     {
       taskNumber: '77e6cs34A',
@@ -385,13 +401,14 @@ export class TaskService {
       status: TaskStatus.TODO,
       date: '2 Mars',
       type: Task.NOTE,
+      price: 1150,
     },
     {
       taskNumber: 'zt7uAc2eil',
       label: 'Cuisiner',
       status: 'DONE',
       date: '23 Dec',
-      price: 9000,
+      price: 1500,
     },
     {
       taskNumber: 'a7ee1s34A',
@@ -399,13 +416,14 @@ export class TaskService {
       status: TaskStatus.DELETED,
       date: '23 Oct',
       type: Task.NOTE,
+      price: 50,
     },
     {
       taskNumber: 'zt7ysc2eil',
       label: 'Changer de téléphone',
       status: TaskStatus.DELETED,
       date: '23 Nov',
-      price: 9000,
+      price: 300,
     },
     {
       taskNumber: 'c7eTcs34b',
@@ -413,13 +431,14 @@ export class TaskService {
       status: TaskStatus.TODO,
       date: '10 Mai',
       type: Task.NOTE,
+      price: 25,
     },
     {
       taskNumber: 'ztl4anc2di9',
       label: 'Lessive',
       status: TaskStatus.TODO,
       date: '8 Avr',
-      price: 9000,
+      price: 8500,
     },
     {
       taskNumber: 'z7we9s340',
@@ -427,13 +446,14 @@ export class TaskService {
       status: TaskStatus.TODO,
       date: '17 Juin',
       type: Task.NOTE,
+      price: 0,
     },
     {
       taskNumber: 'zt7usc2eil',
       label: "Implement l'intercepteur",
       status: TaskStatus.TODO,
       date: '5 Fev',
-      price: 9000,
+      price: 6725,
     },
     {
       taskNumber: '21eFci03i8',
@@ -441,6 +461,7 @@ export class TaskService {
       status: TaskStatus.DELETED,
       date: '3 Janv',
       type: Task.NOTE,
+      price: 10,
     },
   ];
 }

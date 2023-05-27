@@ -14,6 +14,6 @@ export class HomePage implements OnInit {
 
   ngOnInit(): void {
     this.tasks = this.taskService.retrieveTasks();
-    this.folders = this.taskService.retrieveFolders();
+    this.folders = this.taskService.retrieveFolders().slice(0, 3);
   }
 }

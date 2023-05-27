@@ -6,9 +6,16 @@ import { FormsModule } from '@angular/forms';
 import { MainPageRoutingModule } from './main-routing.module';
 
 import { MainPage } from './main.page';
+import { ComponentModule } from '../components/component.module';
 
 @NgModule({
-  imports: [IonicModule, CommonModule, FormsModule, MainPageRoutingModule],
+  imports: [
+    IonicModule,
+    CommonModule,
+    FormsModule,
+    MainPageRoutingModule,
+    ComponentModule,
+  ],
   declarations: [MainPage],
 })
 export class MainPageModule {}
