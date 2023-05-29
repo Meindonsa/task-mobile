@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActionSheetController, ModalController } from '@ionic/angular';
+import { NewArticlePage } from 'src/app/modal/new-article/new-article.page';
 import { NewGroupPage } from 'src/app/modal/new-group/new-group.page';
-import { NewProductPage } from 'src/app/modal/new-product/new-product.page';
 import { SearchPage } from 'src/app/modal/search/search.page';
 
 @Component({
@@ -49,8 +49,8 @@ export class BottomNavigationComponent implements OnInit {
   async openAddFolder() {
     const modal = await this.modalController.create({
       component: NewGroupPage,
-      initialBreakpoint: 0.99,
-      breakpoints: [0, 0.9, 0.99],
+      initialBreakpoint: 0.6,
+      breakpoints: [0, 0.6, 0.6],
     });
     modal.present();
 
@@ -59,9 +59,9 @@ export class BottomNavigationComponent implements OnInit {
 
   async openAddProduct() {
     const modal = await this.modalController.create({
-      component: NewProductPage,
-      initialBreakpoint: 0.99,
-      breakpoints: [0, 0.9, 0.99],
+      component: NewArticlePage,
+      initialBreakpoint: 0.7,
+      breakpoints: [0, 0.7, 0.7],
     });
     modal.present();
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UtilService } from 'src/app/services/common/util/util.service';
 import { TaskService } from 'src/app/services/tasks/task.service';
 
@@ -12,6 +13,7 @@ export class GroupsPage implements OnInit {
   showProgressBar = false;
 
   constructor(
+    private router: Router,
     private taskService: TaskService,
     private utilService: UtilService
   ) {}
@@ -30,6 +32,10 @@ export class GroupsPage implements OnInit {
       event.target.complete();
       this.showProgressBar = false;
     }, 2000);
+  }
+
+  showDetails(list: any) {
+    this.router.navigate(['group'], { state: { list: list } });
   }
 
   init() {

@@ -1,13 +1,54 @@
-<ion-header [translucent]="true">
+<ion-header collapse="fade">
   <ion-toolbar>
-    <ion-title>Group</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button text="Retour"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>{{list.name}}</ion-title>
+
+    <ion-buttons slot="end" (click)="isDelete()">
+      <ion-icon name="trash-outline" color="danger" class="me-3"></ion-icon>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Group</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <app-progress-bar [showProgressBar]="showProgressBar"></app-progress-bar>
+
+  <div class="px-3">
+    <ion-input
+      mode="ios"
+      fill="outline"
+      class="tex-center"
+      [(ngModel)]="list.name"
+      placeholder="Enter text"
+      label-placement="floating"
+    ></ion-input>
+
+    <div class="article-list-container">
+      <ion-list mode="ios" class="mt-3">
+        <ion-list-header>
+          <ion-label>En cours</ion-label>
+        </ion-list-header>
+        <div *ngFor="let task of list.tasks">
+          <app-task-element
+            [task]="task"
+            *ngIf="task.status == 'TODO'"
+          ></app-task-element>
+        </div>
+      </ion-list>
+
+      <ion-list>
+        <ion-list-header lines="inset">
+          <ion-label mode="ios">Achetés</ion-label>
+        </ion-list-header>
+        <div *ngFor="let task of list.tasks">
+          <app-task-element
+            [task]="task"
+            *ngIf="task.status == 'DONE'"
+          ></app-task-element>
+        </div>
+      </ion-list>
+    </div>
+  </div>
 </ion-content>

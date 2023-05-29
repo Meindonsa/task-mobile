@@ -1,9 +1,6 @@
 <ion-item-sliding>
-  <ion-item>
-    <ion-checkbox
-      slot="start"
-      aria-label="Toggle Label without visible text"
-    ></ion-checkbox>
+  <ion-item [ngClass]="{ done: task.status == 'DONE' }">
+    <ion-checkbox slot="start" [checked]="task.status == 'DONE'"></ion-checkbox>
     <ion-label>{{ task.label }}</ion-label>
     <ion-text slot="end"
       ><small>{{ task.price }} Fcfa</small></ion-text

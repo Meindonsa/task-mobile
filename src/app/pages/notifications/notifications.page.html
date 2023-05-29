@@ -1,12 +1,7 @@
 <app-header [title]="'Notifications'"></app-header>
 
 <ion-content [fullscreen]="true">
-  <ion-progress-bar
-    *ngIf="showProgressBar"
-    type="indeterminate"
-    slot="fixed"
-    mode="ios"
-  ></ion-progress-bar>
+  <app-progress-bar [showProgressBar]="showProgressBar"></app-progress-bar>
   <ion-refresher
     slot="fixed"
     (ionRefresh)="handleRefresh($event)"

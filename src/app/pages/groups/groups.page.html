@@ -1,21 +1,17 @@
 <app-header [title]="'Groupes'"></app-header>
 
 <ion-content>
-  <ion-progress-bar
-    *ngIf="showProgressBar"
-    type="indeterminate"
-    slot="fixed"
-    mode="ios"
-  ></ion-progress-bar>
+  <app-progress-bar [showProgressBar]="showProgressBar"></app-progress-bar>
   <ion-refresher
     slot="fixed"
     (ionRefresh)="handleRefresh($event)"
-    pull-min="10"
+    pull-min="15"
   >
   </ion-refresher>
   <ion-card
     mode="ios"
     *ngFor="let group of groups"
+    (click)="showDetails(group)"
     class="animate__animated animate__fadeInUp"
   >
     <ion-row>

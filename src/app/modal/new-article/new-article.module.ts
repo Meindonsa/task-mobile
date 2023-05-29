@@ -4,9 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { NewGroupPageRoutingModule } from './new-group-routing.module';
-
-import { NewGroupPage } from './new-group.page';
+import { NewArticlePageRoutingModule } from './new-article-routing.module';
+import { NewArticlePage } from './new-article.page';
 import { ComponentModule } from 'src/app/components/component.module';
 
 @NgModule({
@@ -16,8 +15,8 @@ import { ComponentModule } from 'src/app/components/component.module';
     IonicModule,
     ComponentModule,
     ReactiveFormsModule,
-    NewGroupPageRoutingModule,
+    NewArticlePageRoutingModule,
   ],
-  declarations: [NewGroupPage],
+  declarations: [NewArticlePage],
 })
-export class NewGroupPageModule {}
+export class NewArticlePageModule {}

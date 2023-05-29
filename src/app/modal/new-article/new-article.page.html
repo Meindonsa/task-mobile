@@ -1,7 +1,6 @@
 <ion-header [translucent]="true" collapse="fade">
   <ion-toolbar>
-    <ion-buttons slot="start"> </ion-buttons>
-    <ion-title>Nouvelle liste</ion-title>
+    <ion-title>Nouvel article</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="close('cancel')" [strong]="true">Annuler</ion-button>
     </ion-buttons>
@@ -14,10 +13,20 @@
     <ion-list>
       <ion-item>
         <ion-input
+          type="text"
           label="Nom de la liste"
           labelPlacement="floating"
           formControlName="name"
-          placeholder="Saisissez le nom de la liste"
+          placeholder="Saisissez le nom de l'article"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input
+          type="number"
+          label="Nom de la liste"
+          labelPlacement="floating"
+          formControlName="price"
+          placeholder="Saisissez le montant"
         ></ion-input>
       </ion-item>
       <ion-item>
@@ -27,8 +36,15 @@
           label="Description"
           labelPlacement="floating"
           formControlName="description"
-          placeholder="Saisissez la description"
+          placeholder="Entrez une description"
         ></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-select label="Ajouter à une liste" placeholder="liste">
+          <ion-select-option *ngFor="let list of lists" [value]="list"
+            >{{list.name}}</ion-select-option
+          >
+        </ion-select>
       </ion-item>
     </ion-list>
     <div class="text-center button-group mt-3">
