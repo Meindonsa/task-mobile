@@ -13,6 +13,7 @@ export class NewArticlePage implements OnInit {
   showProgressBar = false;
   formGroup: FormGroup;
   lists: any = [];
+  today = new Date('dd/MM/yyyy');
 
   constructor(
     private formBuilder: FormBuilder,
