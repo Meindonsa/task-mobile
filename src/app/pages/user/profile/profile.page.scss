@@ -1,0 +1,45 @@
+div.profile-content {
+  height: 25%;
+  div.profile {
+    img {
+      width: 150px;
+    }
+  }
+  div.input-file {
+    margin-top: -40px;
+    display: flex;
+    justify-content: center;
+
+    ion-label.editAvatar {
+      width: 28px;
+      height: 28px;
+      z-index: 9999;
+      border-radius: 50%;
+      align-items: center;
+      margin-right: -85px;
+      display: flex;
+      justify-content: center;
+      border: 1px solid #ccc;
+      background-color: rgba($color: #8c034e, $alpha: 0.9);
+
+      // ion-icon {
+      //   margin-left: 6px;
+      //   margin-top: 5px;
+      // }
+
+      input {
+        width: 30px;
+        height: 30px;
+        z-index: 999;
+        position: fixed;
+        margin-left: -24px;
+        border-radius: 50%;
+        opacity: 0;
+      }
+    }
+  }
+}
+div.options {
+  background-color: #ccc;
+  height: 75%;
+}

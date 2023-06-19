@@ -44,6 +44,36 @@ const routes: Routes = [
     loadChildren: () =>
       import('./modal/article/article.module').then((m) => m.ArticlePageModule),
   },
+  {
+    path: 'login',
+    loadChildren: () =>
+      import('./pages/user/login/login.module').then((m) => m.LoginPageModule),
+  },
+  {
+    path: 'forgot-password',
+    loadChildren: () =>
+      import('./pages/user/forgot-password/forgot-password.module').then(
+        (m) => m.ForgotPasswordPageModule
+      ),
+  },
+  {
+    path: 'reset-password',
+    loadChildren: () =>
+      import('./pages/user/reset-password/reset-password.module').then(
+        (m) => m.ResetPasswordPageModule
+      ),
+  },
+  {
+    path: 'register',
+    loadChildren: () =>
+      import('./pages/user/register/register.module').then(
+        (m) => m.RegisterPageModule
+      ),
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./pages/user/profile/profile.module').then( m => m.ProfilePageModule)
+  },
 ];
 @NgModule({
   imports: [

@@ -8,6 +8,15 @@ import { SwipperSlideComponent } from './swipper-slide/swipper-slide.component';
 import { BottomNavigationComponent } from './bottom-navigation/bottom-navigation.component';
 import { NotificationItemComponent } from './notification-item/notification-item.component';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
+import {
+  LucideAngularModule,
+  File,
+  Home,
+  Menu,
+  UserCheck,
+  Bell,
+} from 'lucide-angular';
+
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -25,7 +34,11 @@ import { ProgressBarComponent } from './progress-bar/progress-bar.component';
     NotificationItemComponent,
     ProgressBarComponent,
   ],
-  imports: [CommonModule, IonicModule],
+  imports: [
+    CommonModule,
+    IonicModule,
+    LucideAngularModule.pick({ File, Home, Menu, UserCheck, Bell }),
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class ComponentModule {}

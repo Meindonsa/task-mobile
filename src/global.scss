@@ -34,6 +34,10 @@
 :root {
   --primary: var(--ion-color-primary);
 }
+
+.text-primary {
+  color: var(--primary) !important;
+}
 // Checkbox
 ion-checkbox {
   --size: 20px;

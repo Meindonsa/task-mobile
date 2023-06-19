@@ -1,0 +1,48 @@
+<ion-content>
+  <div class="container-fluid vh-100 login-page-body">
+    <div class="container-fluid login-form">
+      <div class="logo">
+        <img src="assets/image/logo/logo.png" alt="logo" />
+      </div>
+      <form [formGroup]="formGroup" (submit)="login()">
+        <ion-list>
+          <ion-item>
+            <ion-input
+              mode="ios"
+              type="text"
+              label="Email"
+              placeholder="E-mail"
+              formControlName="email"
+              label-placement="floating"
+              fill="solid"
+            ></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input
+              mode="ios"
+              fill="solid"
+              type="password"
+              label="Mot de passe"
+              formControlName="password"
+              placeholder="Mot de passe"
+              label-placement="floating"
+            ></ion-input>
+          </ion-item>
+          <div class="text-end my-2">
+            <span routerLink="/forgot-password">Mot de passe oublié</span>
+          </div>
+        </ion-list>
+        <div class="text-center my-5">
+          <ion-button size="medium" type="submit" [disabled]="!formGroup.valid"
+            >Se connecter</ion-button
+          >
+        </div>
+        <div class="text-center mb-4">
+          <span routerLink="/register"
+            >Nouveau chez nous ? Créez un compte</span
+          >
+        </div>
+      </form>
+    </div>
+  </div>
+</ion-content>

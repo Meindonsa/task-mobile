@@ -7,7 +7,7 @@
     </ion-toolbar>
   </ion-header>
 
-  <h6 class="ms-3">23, Mai 2023</h6>
+  <h6 class="ms-3">{{today | date:'dd MMMM yyyy'}}</h6>
   <div class="mt-5">
     <app-swipper-slide [folders]="folders"></app-swipper-slide>
   </div>

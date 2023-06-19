@@ -9,6 +9,7 @@ import { TaskService } from 'src/app/services/tasks/task.service';
 export class HomePage implements OnInit {
   tasks: any = [];
   folders: any = [];
+  today = new Date();
 
   constructor(private taskService: TaskService) {}
 

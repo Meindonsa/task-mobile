@@ -1,0 +1,79 @@
+<ion-header collapse="condense">
+  <ion-toolbar>
+    <ion-buttons slot="start" fill="clear">
+      <ion-back-button text="" icon="arrow-back"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container-fluid login-page-body">
+    <div class="container-fluid login-form">
+      <div class="logo text-center">
+        <img src="assets/image/logo/logo.png" alt="logo" />
+      </div>
+      <form [formGroup]="formGroup" (submit)="register()">
+        <ion-list>
+          <ion-item>
+            <ion-input
+              mode="ios"
+              type="text"
+              label="Nom"
+              placeholder="Votre nom"
+              label-placement="floating"
+              fill="solid"
+            ></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input
+              mode="ios"
+              type="text"
+              label="Prénom"
+              placeholder="Votre prénom"
+              label-placement="floating"
+              fill="solid"
+            ></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input
+              mode="ios"
+              type="tel"
+              label="Téléphone"
+              placeholder="Numéro de téléphone"
+              label-placement="floating"
+              fill="solid"
+            ></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input
+              mode="ios"
+              type="text"
+              label="Email"
+              placeholder="E-mail"
+              label-placement="floating"
+              fill="solid"
+            ></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input
+              mode="ios"
+              fill="solid"
+              type="password"
+              label="Mot de passe"
+              placeholder="Mot de passe"
+              label-placement="floating"
+            ></ion-input>
+          </ion-item>
+          <ion-checkbox labelPlacement="end" class="mt-3"
+            >J'accepte les termes et conditions</ion-checkbox
+          >
+        </ion-list>
+        <div class="text-center my-3">
+          <ion-button size="medium" type="submit" [disabled]="!formGroup.valid"
+            >Se connecter</ion-button
+          >
+        </div>
+      </form>
+    </div>
+  </div>
+</ion-content>

@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class UtilService {
+  regEmail: RegExp = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
   constructor() {}
 
   getTotalFolderPrice(tasks: any) {
@@ -12,5 +13,13 @@ export class UtilService {
       totalPrice += element.price;
     });
     return totalPrice;
+  }
+
+  isSamePassword(password: string, confirmPassword: string) {
+    return password === confirmPassword;
+  }
+
+  isEmail(email: string) {
+    return this.regEmail.test(email);
   }
 }
