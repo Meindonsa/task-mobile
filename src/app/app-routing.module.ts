@@ -72,7 +72,36 @@ const routes: Routes = [
   },
   {
     path: 'profile',
-    loadChildren: () => import('./pages/user/profile/profile.module').then( m => m.ProfilePageModule)
+    loadChildren: () =>
+      import('./pages/user/profile/profile.module').then(
+        (m) => m.ProfilePageModule
+      ),
+  },
+  {
+    path: 'terms',
+    loadChildren: () =>
+      import('./pages/user/terms/terms.module').then((m) => m.TermsPageModule),
+  },
+  {
+    path: 'support',
+    loadChildren: () =>
+      import('./pages/user/support/support.module').then(
+        (m) => m.SupportPageModule
+      ),
+  },
+  {
+    path: 'update-password',
+    loadChildren: () =>
+      import('./pages/user/update-password/update-password.module').then(
+        (m) => m.UpdatePasswordPageModule
+      ),
+  },
+  {
+    path: 'personal-information',
+    loadChildren: () =>
+      import(
+        './pages/user/personal-information/personal-information.module'
+      ).then((m) => m.PersonalInformationPageModule),
   },
 ];
 @NgModule({

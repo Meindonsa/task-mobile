@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ProfilePageRoutingModule } from './profile-routing.module';
+import { TermsPageRoutingModule } from './terms-routing.module';
 
-import { ProfilePage } from './profile.page';
+import { TermsPage } from './terms.page';
 import {
   LucideAngularModule,
   User,
@@ -14,7 +14,6 @@ import {
   BellRing,
   FileText,
   Rotate3d,
-  Bookmark,
 } from 'lucide-angular';
 
 @NgModule({
@@ -22,17 +21,9 @@ import {
     CommonModule,
     FormsModule,
     IonicModule,
-    ProfilePageRoutingModule,
-
-    LucideAngularModule.pick({
-      User,
-      Lock,
-      BellRing,
-      FileText,
-      Rotate3d,
-      Bookmark,
-    }),
+    TermsPageRoutingModule,
+    LucideAngularModule.pick({ User, Lock, BellRing, FileText, Rotate3d }),
   ],
-  declarations: [ProfilePage],
+  declarations: [TermsPage],
 })
-export class ProfilePageModule {}
+export class TermsPageModule {}

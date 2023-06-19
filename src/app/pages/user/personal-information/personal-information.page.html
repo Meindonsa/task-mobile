@@ -1,0 +1,57 @@
+<ion-header collapse="condense">
+  <ion-toolbar>
+    <ion-buttons class="ms-2" slot="start">
+      <ion-back-button text="Annuler"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Profile</ion-title>
+    <ion-button fill="clear" slot="end">OK</ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="text-center profile-content">
+    <div class="profile border-bottom">
+      <img src="assets/image/profile.png" alt="profile" />
+    </div>
+  </div>
+  <div class="mt-3">
+    <ion-list>
+      <ion-item>
+        <ion-input
+          mode="ios"
+          type="text"
+          label="Nom"
+          placeholder="Nom"
+          labelPlacement="stacked"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input
+          mode="ios"
+          type="text"
+          label="Prénom"
+          placeholder="Prénom"
+          labelPlacement="stacked"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input
+          mode="ios"
+          type="email"
+          labelPlacement="stacked"
+          label="E-mail"
+          placeholder="E-mail"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input
+          mode="ios"
+          type="tel"
+          label="Téléphone"
+          placeholder="Téléphone"
+          labelPlacement="stacked"
+        ></ion-input>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

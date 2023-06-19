@@ -1,6 +1,6 @@
 <ion-header collapse="condense">
   <ion-toolbar>
-    <ion-buttons>
+    <ion-buttons class="ms-2">
       <ion-back-button text="" icon="arrow-back"></ion-back-button>
     </ion-buttons>
     <ion-title>Profile</ion-title>
@@ -15,27 +15,32 @@
     <div class="input-file">
       <ion-label class="editAvatar" for="avatar">
         <ion-icon name="camera-outline" color="light"></ion-icon>
-        <!-- <input
+        <input
           type="file"
           id="avatar"
           class="pencil"
           (change)="  updateProfilePicture($event)"
           accept="image/png, image/jpeg"
-        /> -->
+        />
       </ion-label>
     </div>
-    <div class="info-user mt-3">
+    <div class="info-user my-3">
       @Boris_Axel
       <!-- <p>boris@axel.com</p> -->
     </div>
   </div>
   <div class="options pt-3">
     <ion-list lines="full" [inset]="true">
-      <ion-item mode="ios" detail="true">
+      <ion-item
+        mode="ios"
+        detail="true"
+        button
+        routerLink="/personal-information"
+      >
         <lucide-icon name="user" slot="start"></lucide-icon>
         <ion-label>Informations personnels</ion-label>
       </ion-item>
-      <ion-item mode="ios" detail="true">
+      <ion-item mode="ios" detail="true" button routerLink="/update-password">
         <lucide-icon name="lock" slot="start"></lucide-icon>
         <ion-label>Mot de passe</ion-label>
       </ion-item>
@@ -45,13 +50,15 @@
           Notifications
         </ion-toggle>
       </ion-item>
-      <ion-item mode="ios" detail="true">
+      <ion-item mode="ios" detail="true" button routerLink="/terms">
         <lucide-icon name="FileText" slot="start"></lucide-icon>
         <ion-label>Conditions d'utilisation</ion-label>
       </ion-item>
-      <ion-item mode="ios" detail="true">
-        <lucide-icon name="bell-ring" slot="start"></lucide-icon>
-        <ion-label>Support</ion-label>
+      <ion-item mode="ios" detail="true" button routerLink="/support">
+        <span slot="start">
+          <lucide-icon name="bookmark" [size]="20"></lucide-icon>
+        </span>
+        <ion-label>A propos</ion-label>
       </ion-item>
     </ion-list>
     <ion-card>
@@ -71,7 +78,7 @@
         <a href="#" class="text-primary">Catalogue d'applications</a>
       </ion-card-content>
     </ion-card>
-    <div class="text-center mt-3">
+    <div class="text-center my-3">
       <p class="text-primary">v1.0.0</p>
     </div>
   </div>
