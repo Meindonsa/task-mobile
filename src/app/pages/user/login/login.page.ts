@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { LoaderService } from 'src/app/services/common/loader/loader.service';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +12,10 @@ import { Router } from '@angular/router';
 export class LoginPage implements OnInit {
   formGroup: FormGroup;
 
-  constructor(private router: Router, private formBuilder: FormBuilder) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private authService: AuthService
+  ) {
     this.formGroup = formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(4)]],
@@ -20,6 +25,6 @@ export class LoginPage implements OnInit {
   ngOnInit() {}
 
   login() {
-    this.router.navigate(['home']);
+    this.authService.login(this.formGroup.value);
   }
 }

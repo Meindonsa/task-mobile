@@ -20,6 +20,7 @@
               type="text"
               label="Nom"
               placeholder="Votre nom"
+              formControlName="lastName"
               label-placement="floating"
               fill="solid"
             ></ion-input>
@@ -29,6 +30,7 @@
               mode="ios"
               type="text"
               label="Prénom"
+              formControlName="firstName"
               placeholder="Votre prénom"
               label-placement="floating"
               fill="solid"
@@ -39,8 +41,9 @@
               mode="ios"
               type="tel"
               label="Téléphone"
-              placeholder="Numéro de téléphone"
+              formControlName="phone"
               label-placement="floating"
+              placeholder="Numéro de téléphone"
               fill="solid"
             ></ion-input>
           </ion-item>
@@ -50,6 +53,7 @@
               type="text"
               label="Email"
               placeholder="E-mail"
+              formControlName="email"
               label-placement="floating"
               fill="solid"
             ></ion-input>
@@ -60,16 +64,23 @@
               fill="solid"
               type="password"
               label="Mot de passe"
+              formControlName="password"
               placeholder="Mot de passe"
               label-placement="floating"
             ></ion-input>
           </ion-item>
-          <ion-checkbox labelPlacement="end" class="mt-3"
+          <ion-checkbox
+            labelPlacement="end"
+            class="mt-3"
+            formControlName="agree"
             >J'accepte les termes et conditions</ion-checkbox
           >
         </ion-list>
         <div class="text-center my-3">
-          <ion-button size="medium" type="submit" [disabled]="!formGroup.valid"
+          <ion-button
+            size="medium"
+            type="submit"
+            [disabled]="!formGroup.valid || !formGroup.value.agree"
             >Se connecter</ion-button
           >
         </div>

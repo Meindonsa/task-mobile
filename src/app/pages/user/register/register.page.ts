@@ -11,12 +11,18 @@ export class RegisterPage implements OnInit {
 
   constructor(private formBuilder: FormBuilder) {
     this.formGroup = formBuilder.group({
+      lastName: ['', Validators.required],
+      firstName: ['', Validators.required],
+      phone: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(4)]],
+      agree: [false, Validators.required],
     });
   }
 
   ngOnInit() {}
 
-  register() {}
+  register() {
+    console.log(this.formGroup.value);
+  }
 }
