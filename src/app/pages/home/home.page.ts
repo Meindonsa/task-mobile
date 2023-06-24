@@ -9,6 +9,7 @@ import { TaskService } from 'src/app/services/tasks/task.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
+  expensesLists: any = [];
   today = new Date();
   folders: any = [];
   tasks: any = [];

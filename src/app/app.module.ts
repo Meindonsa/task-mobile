@@ -11,7 +11,11 @@ import localeFr from '@angular/common/locales/fr';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { InterceptorService } from './services/common/interceptor/interceptor.service';
 import { environment } from 'src/environments/environment';
-import { BASE_PATH, UserService } from '@spacelab-task/api';
+import {
+  BASE_PATH,
+  ExpensesListService,
+  UserService,
+} from '@spacelab-task/api';
 registerLocaleData(localeFr, 'fr');
 
 @NgModule({
@@ -24,6 +28,7 @@ registerLocaleData(localeFr, 'fr');
   ],
   providers: [
     UserService,
+    ExpensesListService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     { provide: LOCALE_ID, useValue: 'fr' },
     {
