@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '@spacelab-task/api';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { LoaderService } from 'src/app/services/common/loader/loader.service';
 
 @Component({
   selector: 'app-profile',
@@ -6,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
-  constructor() {}
+  user: any;
 
-  ngOnInit() {}
+  constructor(
+    private authService: AuthService,
+    private loaderService: LoaderService
+  ) {}
+
+  ngOnInit() {
+    this.user = this.authService.getUser();
+  }
 
   updateProfilePicture(picture: any) {}
 }
