@@ -30,7 +30,7 @@ export class AuthService {
       next: (response) => {
         this.saveUser(response);
         this.loaderService.hide(loading);
-        this.router.navigate(['dashboard']);
+        this.router.navigate(['home']);
       },
       error: () => {
         this.loaderService.hide(loading);
@@ -48,19 +48,10 @@ export class AuthService {
     this.storageService.removeData(this.CONNECTED_USER);
   }
 
-  validateConnection() {
-    // if (this.isAuthenticated()) {
-    //   let user = this.getUser();
-    //   this.userService.validateToken(user.token).subscribe((status) => {
-    //     if (!status) this.logout();
-    //   });
-    // } else this.logout();
-  }
-
-  validateToken(token: string) {
-    // this.userService.validateToken(token).subscribe((status) => {
-    //   if (!status) this.logout();
-    // });
+  validateToken(data: any) {
+    this.userService.validateToken(data).subscribe((status) => {
+      if (!status) this.logout();
+    });
   }
 
   isAuthenticated(): boolean {
@@ -91,11 +82,11 @@ export class AuthService {
   }
 
   updatePassword(data: any) {
-    // return this.userService.updatePassword(data);
+    return this.userService.updatePassword(data);
   }
 
   updateUser(data: any) {
-    // return this.userService.updateUser(data);
+    return this.userService.update(data);
   }
 
   forgotPassword(email: string) {

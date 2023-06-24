@@ -36,7 +36,7 @@ export class InterceptorService {
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
         if (error.status == 401) this.router.navigate(['home']);
-        if (error.status == 403) this.router.navigate(['logout']);
+        if (error.status == 403) this.router.navigate(['login']);
 
         //let title = "Erreur de connexion :";
         let title = '';
