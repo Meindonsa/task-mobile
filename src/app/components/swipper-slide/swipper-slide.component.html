@@ -2,7 +2,7 @@
   slides-per-view="auto"
   (slidechange)="swiperSlideChanged($event)"
 >
-  <swiper-slide *ngFor="let taskGroup of folders" class="m-2">
+  <swiper-slide *ngFor="let expensesList of folders" class="m-2">
     <div class="card mb-3 w-100 mx-2 p-3 border-0 shadow">
       <div class="row g-0">
         <div
@@ -10,18 +10,18 @@
         >
           <div class="swiper-folder-name-container">
             <ion-icon name="folder-open-outline"></ion-icon>
-            {{ taskGroup.name }}
+            {{ expensesList?.name }}
           </div>
           <div class="swiper-price-container">
-            <span>{{ getTotalPrice(taskGroup.tasks) }} Fcfa</span>
+            <span>{{ expensesList?.amount }} Fcfa</span>
           </div>
         </div>
         <div class="row d-flex justify-content-between align-items-center">
           <div class="col-10 swiper-description-container">
-            {{ taskGroup.description }}
+            {{ expensesList?.description }}
           </div>
           <div class="circle-article-pourcent rounded-circle">
-            {{ taskGroup.tasks.length }}
+            {{ expensesList?.expenseNumber }}
           </div>
         </div>
       </div>

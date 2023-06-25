@@ -10,8 +10,8 @@
   </ion-refresher>
   <ion-card
     mode="ios"
-    *ngFor="let group of groups"
-    (click)="showDetails(group)"
+    *ngFor="let expensesList of expensesLists"
+    (click)="showDetails(expensesList)"
     class="animate__animated animate__fadeInUp"
   >
     <ion-row>
@@ -19,15 +19,15 @@
         <ion-icon name="folder-open-outline" size="large"></ion-icon>
       </ion-col>
       <ion-col size="9">
-        <ion-card-subtitle>{{group.name}}</ion-card-subtitle>
-        <span class="truncat-description">{{group.description}}</span>
+        <ion-card-subtitle>{{expensesList?.name}}</ion-card-subtitle>
+        <span class="truncat-description">{{expensesList?.description}}</span>
         <div class="d-flex justify-content-end mt-1">
-          <ion-text
-            ><strong>{{getTotalPrice(group.tasks)}} Fcfa</strong></ion-text
-          >
+          <ion-text><strong>{{expensesList?.amount}} Fcfa</strong></ion-text>
         </div>
       </ion-col>
     </ion-row>
-    <ion-progress-bar [value]="0.1"></ion-progress-bar>
+    <ion-progress-bar
+      value="{{'0.'+expensesLists?.percentage}}"
+    ></ion-progress-bar>
   </ion-card>
 </ion-content>

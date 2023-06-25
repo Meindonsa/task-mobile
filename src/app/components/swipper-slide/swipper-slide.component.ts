@@ -16,8 +16,4 @@ export class SwipperSlideComponent implements OnInit {
   swiperSlideChanged(event: any) {
     // console.log(event);
   }
-
-  getTotalPrice(tasks: any) {
-    return this.utilService.getTotalFolderPrice(tasks);
-  }
 }

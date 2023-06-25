@@ -1,4 +1,4 @@
-<ion-header [translucent]="true" collapse="fade">
+<ion-header collapse="fade">
   <ion-toolbar>
     <ion-buttons slot="start"> </ion-buttons>
     <ion-title>Nouvelle liste</ion-title>
@@ -8,7 +8,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content>
   <app-progress-bar [showProgressBar]="showProgressBar"></app-progress-bar>
   <form [formGroup]="formGroup" (ngSubmit)="create()">
     <ion-list>
@@ -31,7 +31,7 @@
         ></ion-textarea>
       </ion-item>
     </ion-list>
-    <div class="text-center button-group mt-3">
+    <div class="text-center button-group mt-3" *ngIf="!showProgressBar">
       <ion-button type="submit" size="medium" [disabled]="!formGroup.valid"
         >Créer</ion-button
       >
