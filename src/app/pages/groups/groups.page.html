@@ -27,7 +27,13 @@
       </ion-col>
     </ion-row>
     <ion-progress-bar
-      value="{{'0.'+expensesLists?.percentage}}"
+      [value]="getPercentage(expensesList?.percentage)"
     ></ion-progress-bar>
   </ion-card>
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button size="small" (click)="openAddFolder()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

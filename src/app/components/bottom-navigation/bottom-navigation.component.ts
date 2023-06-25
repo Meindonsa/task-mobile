@@ -10,63 +10,9 @@ import { SearchPage } from 'src/app/modal/search/search.page';
   styleUrls: ['./bottom-navigation.component.scss'],
 })
 export class BottomNavigationComponent implements OnInit {
-  constructor(
-    private modalController: ModalController,
-    private actionSheetController: ActionSheetController
-  ) {}
+  constructor(private modalController: ModalController) {}
 
   ngOnInit() {}
-
-  async openAdd() {
-    const actionSheet = await this.actionSheetController.create({
-      header: 'Que voulez-vous créer ?',
-      mode: 'ios',
-      buttons: [
-        {
-          text: 'Liste',
-          role: 'list',
-          handler: () => {
-            this.openAddFolder();
-          },
-        },
-        {
-          text: 'Article',
-          role: 'article',
-          handler: () => {
-            this.openAddProduct();
-          },
-        },
-        {
-          text: 'Cancel',
-          role: 'cancel',
-        },
-      ],
-    });
-
-    await actionSheet.present();
-  }
-
-  async openAddFolder() {
-    const modal = await this.modalController.create({
-      component: NewGroupPage,
-      initialBreakpoint: 0.6,
-      breakpoints: [0, 0.6, 0.6],
-    });
-    modal.present();
-
-    await modal.onWillDismiss();
-  }
-
-  async openAddProduct() {
-    const modal = await this.modalController.create({
-      component: NewArticlePage,
-      initialBreakpoint: 0.7,
-      breakpoints: [0, 0.7, 0.7],
-    });
-    modal.present();
-
-    await modal.onWillDismiss();
-  }
 
   async openSearchPage() {
     const modal = await this.modalController.create({

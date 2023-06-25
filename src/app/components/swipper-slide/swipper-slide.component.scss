@@ -62,3 +62,11 @@ div.swiper-price-container {
   font-size: 14px;
   font-weight: bold;
 }
+
+swiper-slide.newFolder {
+  width: 100% !important;
+  ion-icon {
+    color: var(--ion-color-primary);
+    font-size: 3.9rem;
+  }
+}

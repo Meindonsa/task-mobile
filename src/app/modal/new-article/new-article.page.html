@@ -1,4 +1,4 @@
-<ion-header [translucent]="true" collapse="fade">
+<ion-header collapse="fade">
   <ion-toolbar>
     <ion-title>Nouvel article</ion-title>
     <ion-buttons slot="end">
@@ -7,9 +7,9 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content>
   <app-progress-bar [showProgressBar]="showProgressBar"></app-progress-bar>
-  <form [formGroup]="formGroup" (ngSubmit)="create()">
+  <form [formGroup]="formGroup" (ngSubmit)="create()" class="mt-3">
     <ion-list>
       <ion-item>
         <ion-input
@@ -39,7 +39,7 @@
           placeholder="Entrez une description"
         ></ion-textarea>
       </ion-item>
-      <ion-item>
+      <ion-item *ngIf="expensesListNumber==null">
         <ion-select label="Ajouter à une liste" placeholder="liste">
           <ion-select-option *ngFor="let list of lists" [value]="list"
             >{{list.name}}</ion-select-option

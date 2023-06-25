@@ -27,4 +27,17 @@
       </div>
     </div>
   </swiper-slide>
+
+  <swiper-slide class="m-2 newFolder" *ngIf="folders.length == 0">
+    <div class="card mb-3 w-100 mx-2 p-3 border-0 shadow">
+      <div class="row g-0">
+        <div
+          class="col-12 mb-3 d-flex justify-content-center align-items-center flex-column"
+        >
+          <ion-icon name="add-circle-outline"></ion-icon>
+          <small>Créer une nouvelle liste </small>
+        </div>
+      </div>
+    </div>
+  </swiper-slide>
 </swiper-container>

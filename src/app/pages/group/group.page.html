@@ -1,13 +1,17 @@
-<ion-header collapse="fade">
+<ion-header collapse="condense">
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button text="Retour"></ion-back-button>
     </ion-buttons>
 
-    <ion-title>{{list.name}}</ion-title>
+    <ion-title>{{group.name}}</ion-title>
 
-    <ion-buttons slot="end" (click)="isDelete()">
-      <ion-icon name="trash-outline" color="danger" class="me-3"></ion-icon>
+    <ion-buttons slot="end" id="options">
+      <ion-icon
+        name="ellipsis-vertical-outline"
+        color="danger"
+        class="me-3"
+      ></ion-icon>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -20,7 +24,7 @@
       mode="ios"
       fill="outline"
       class="tex-center"
-      [(ngModel)]="list.name"
+      [(ngModel)]="group.name"
       placeholder="Enter text"
       label-placement="floating"
     ></ion-input>
@@ -30,10 +34,14 @@
         <ion-list-header>
           <ion-label>En cours</ion-label>
         </ion-list-header>
-        <div *ngFor="let task of list.tasks">
+        <ion-item *ngIf="todo.length==0" lines="none" class="text-center">
+          <ion-label class="text-muted"> Vous avez tout acheter ! </ion-label>
+        </ion-item>
+        <div *ngFor="let item of todo">
           <app-task-element
-            [task]="task"
-            *ngIf="task.status == 'TODO'"
+            [task]="item"
+            [userTarget]="userTarget"
+            (productChanged)="receiveChanging($event)"
           ></app-task-element>
         </div>
       </ion-list>
@@ -42,13 +50,39 @@
         <ion-list-header lines="inset">
           <ion-label mode="ios">Achetés</ion-label>
         </ion-list-header>
-        <div *ngFor="let task of list.tasks">
+        <ion-item *ngIf="done.length==0" lines="none" class="text-center">
+          <ion-label class="text-muted">
+            Vous n'avez encore rien acheter !
+          </ion-label>
+        </ion-item>
+        <div *ngFor="let item of done">
           <app-task-element
-            [task]="task"
-            *ngIf="task.status == 'DONE'"
+            [task]="item"
+            [userTarget]="userTarget"
+            (productChanged)="receiveChanging($event)"
           ></app-task-element>
         </div>
       </ion-list>
     </div>
   </div>
+
+  <ion-popover trigger="options" [dismissOnSelect]="true">
+    <ng-template>
+      <ion-content>
+        <ion-list>
+          <ion-item [button]="true" [detail]="false" (click)="openAddProduct()"
+            >Nouveau produit</ion-item
+          >
+          <ion-item
+            [button]="true"
+            [detail]="false"
+            class="text-danger"
+            (click)="isDelete()"
+          >
+            Supprimer</ion-item
+          >
+        </ion-list>
+      </ion-content>
+    </ng-template>
+  </ion-popover>
 </ion-content>
