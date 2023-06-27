@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import {
   ActionSheetController,
   ModalController,
+  NavController,
   PopoverController,
 } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth/auth.service';
@@ -23,6 +24,7 @@ export class GroupPage implements OnInit {
 
   constructor(
     private authService: AuthService,
+    private navController: NavController,
     private modalController: ModalController,
     public popoverController: PopoverController,
     private expensesListService: ExpensesListService,
@@ -70,8 +72,9 @@ export class GroupPage implements OnInit {
   }
 
   async receiveChanging(event: any) {
-    // console.log(event);
-    await this.retrieveGroupDetail();
+    await setTimeout(() => {
+      this.retrieveGroupDetail();
+    }, 2500);
   }
 
   async openAddProduct() {
@@ -112,5 +115,8 @@ export class GroupPage implements OnInit {
     });
 
     await actionSheet.present();
+  }
+  back() {
+    this.navController.navigateBack('groups', { state: { refresh: true } });
   }
 }

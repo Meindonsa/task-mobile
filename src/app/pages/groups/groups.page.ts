@@ -31,6 +31,11 @@ export class GroupsPage implements OnInit {
 
   ionViewWillEnter() {
     this.retrieveExpensesList();
+    const state = history.state;
+    if (state.refresh) {
+      console.log(state);
+      this.retrieveExpensesList();
+    }
   }
 
   retrieveExpensesList() {
@@ -49,10 +54,11 @@ export class GroupsPage implements OnInit {
   }
 
   handleRefresh(event: any) {
-    // this.showProgressBar = true;
+    this.showProgressBar = true;
     setTimeout(() => {
+      this.showProgressBar = false;
+      this.retrieveExpensesList();
       event.target.complete();
-      // this.showProgressBar = false;
     }, 2000);
   }
 
