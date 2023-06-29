@@ -33,11 +33,14 @@
 
 :root {
   --primary: var(--ion-color-primary);
+  --secondary: #012a36;
+  --grey: #d9d9d9;
 }
 
 .text-primary {
   color: var(--primary) !important;
 }
+
 // Checkbox
 ion-checkbox {
   --size: 20px;
@@ -115,9 +118,15 @@ ion-checkbox::part(container) {
 
 /* CUSTOM TOAST */
 .success-toast {
-  --background: var(--ion-color-primary);
-  // --box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.2);
+  --background: var(--secondary);
   --color: var(--ion-color-primary-contrast);
+  --width: fit-content !important;
+}
+
+.error-toast {
+  --background: var(--ion-color-primary);
+  --color: var(--grey);
+  --width: fit-content !important;
 }
 
 .button-group {

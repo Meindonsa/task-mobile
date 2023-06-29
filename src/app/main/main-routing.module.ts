@@ -4,6 +4,66 @@ import { MainPage } from './main.page';
 
 const routes: Routes = [
   {
+    path: 'profile',
+    loadChildren: () =>
+      import('../pages/user/profile/profile.module').then(
+        (m) => m.ProfilePageModule
+      ),
+  },
+  {
+    path: 'support',
+    loadChildren: () =>
+      import('../pages/user/support/support.module').then(
+        (m) => m.SupportPageModule
+      ),
+  },
+  {
+    path: 'update-password',
+    loadChildren: () =>
+      import('../pages/user/update-password/update-password.module').then(
+        (m) => m.UpdatePasswordPageModule
+      ),
+  },
+  {
+    path: 'personal-information',
+    loadChildren: () =>
+      import(
+        '../pages/user/personal-information/personal-information.module'
+      ).then((m) => m.PersonalInformationPageModule),
+  },
+  {
+    path: 'group',
+    data: { list: 'list' },
+    loadChildren: () =>
+      import('../pages/group/group.module').then((m) => m.GroupPageModule),
+  },
+  {
+    path: 'article',
+    loadChildren: () =>
+      import('../modal/article/article.module').then(
+        (m) => m.ArticlePageModule
+      ),
+  },
+  {
+    path: 'search',
+    loadChildren: () =>
+      import('../modal/search/search.module').then((m) => m.SearchPageModule),
+  },
+  {
+    path: 'new-product',
+    loadChildren: () =>
+      import('../modal/new-article/new-article.module').then(
+        (m) => m.NewArticlePageModule
+      ),
+  },
+  {
+    path: 'new-group',
+    loadChildren: () =>
+      import('../modal/new-group/new-group.module').then(
+        (m) => m.NewGroupPageModule
+      ),
+  },
+  {
     path: '',
     component: MainPage,
     children: [
