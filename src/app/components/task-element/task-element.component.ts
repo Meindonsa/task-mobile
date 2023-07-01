@@ -12,7 +12,7 @@ export class TaskElementComponent implements OnInit {
   @Input('task') product: any;
   user: any;
 
-  constructor(private productService: ProductService) {}
+  constructor() {}
 
   ngOnInit() {}
 
@@ -22,14 +22,21 @@ export class TaskElementComponent implements OnInit {
       productNumber: this.product.productNumber,
       status: this.getStatus(),
     };
-    this.productService.validateProduct(view).subscribe({
-      next: () => {
-        this.productChanged.emit(true);
-      },
-    });
   }
 
   getStatus() {
     return this.product.status == 'TODO' ? 'DONE' : 'TODO';
+  }
+
+  slideEvent(action: any) {
+    let status = action == 'check' ? this.getStatus() : null;
+    let data = {
+      ...this.userTarget,
+      productNumber: this.product.productNumber,
+      product: this.product,
+      action: action,
+      status: status,
+    };
+    this.productChanged.emit(data);
   }
 }

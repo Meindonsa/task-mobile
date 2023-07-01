@@ -1,4 +1,4 @@
-import { ExpensesListService } from '@spacelab-task/api';
+import { ExpensesListService, ProductService } from '@spacelab-task/api';
 import { Component, OnInit } from '@angular/core';
 import {
   ActionSheetController,
@@ -19,12 +19,14 @@ export class GroupPage implements OnInit {
   userTarget: any;
   done: any = [];
   todo: any = [];
+  amount: number;
   group: any;
   user: any;
 
   constructor(
     private authService: AuthService,
     private navController: NavController,
+    private productService: ProductService,
     private modalController: ModalController,
     public popoverController: PopoverController,
     private expensesListService: ExpensesListService,
@@ -42,6 +44,14 @@ export class GroupPage implements OnInit {
       userName: this.user.userName,
       targetNumber: this.group.expensesListNumber,
     };
+    this.amount = this.group.amount;
+  }
+
+  generateAmount() {
+    this.amount = 0;
+    this.todo.forEach((item: any) => {
+      this.amount += item.price;
+    });
   }
 
   retrieveGroupDetail() {
@@ -71,10 +81,68 @@ export class GroupPage implements OnInit {
     });
   }
 
-  async receiveChanging(event: any) {
-    await setTimeout(() => {
-      this.retrieveGroupDetail();
-    }, 2500);
+  receiveChanging(event: any) {
+    if (event.action == 'check') {
+      this.changeProductStatus(event);
+    }
+  }
+
+  changeProductStatus(view: any) {
+    view.status == 'DONE'
+      ? this.doneProduct(view)
+      : view.status == 'TODO'
+      ? this.todoProduct(view)
+      : null;
+  }
+
+  deleteProduct(view: any) {}
+
+  editProduct(view: any) {}
+
+  doneProduct(view: any) {
+    this.todo = this.removeProduct(this.todo, view.product, 500);
+    view.product.status = 'DONE';
+    this.done = this.addProduct(this.done, view.product, 600);
+    this.changeStatus(view);
+  }
+
+  todoProduct(view: any) {
+    this.done = this.removeProduct(this.done, view.product, 500);
+    view.product.status = 'TODO';
+    this.todo = this.addProduct(this.todo, view.product, 600);
+    this.changeStatus(view);
+  }
+
+  changeStatus(view: any) {
+    delete view.product;
+    delete view.action;
+    this.productService.validateProduct(view).subscribe();
+  }
+
+  removeProduct(list: any, product: any, time: number = 0) {
+    let myList = list;
+    setTimeout(() => {
+      let index = this.retrieveProductIndex(list, product);
+      myList.splice(index, 1);
+      this.generateAmount();
+    }, time);
+    return myList;
+  }
+
+  addProduct(list: any, product: any, time: number = 0) {
+    let myList = list;
+    setTimeout(() => {
+      myList.unshift(product);
+      this.generateAmount();
+    }, time);
+    return myList;
+  }
+
+  retrieveProductIndex(list: any, product: any) {
+    let index = list.findIndex(
+      (item: any) => item.productNumber == product.productNumber
+    );
+    return index > -1 ? index : null;
   }
 
   async openAddProduct() {
