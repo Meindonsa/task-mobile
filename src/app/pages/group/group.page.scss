@@ -1,3 +1,9 @@
+ion-input.input-group,
+ion-textarea.input-group {
+  background-color: #fafafa;
+  --padding-start: 0.5rem;
+}
+
 div.input {
   ion-button {
     ion-icon {

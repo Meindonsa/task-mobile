@@ -52,6 +52,7 @@ export class GroupPage implements OnInit {
     this.todo.forEach((item: any) => {
       this.amount += item.price;
     });
+    this.group.amount = this.amount;
   }
 
   retrieveGroupDetail() {
@@ -72,6 +73,12 @@ export class GroupPage implements OnInit {
         this.showProgressBar = false;
       },
     });
+  }
+
+  updateGroup() {
+    delete this.group.products;
+    let view = { ...this.group, userName: this.user.userName };
+    this.expensesListService.updateTaskGroup(view).subscribe();
   }
 
   divideProducts(products: any[]) {
