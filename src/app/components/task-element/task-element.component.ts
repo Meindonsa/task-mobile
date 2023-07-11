@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { IonItemSliding } from '@ionic/angular';
 import { ProductService } from '@spacelab-task/api';
 
 @Component({
@@ -28,7 +29,8 @@ export class TaskElementComponent implements OnInit {
     return this.product.status == 'TODO' ? 'DONE' : 'TODO';
   }
 
-  slideEvent(action: any) {
+  slideEvent(action: any, item: IonItemSliding) {
+    item.close();
     let status = action == 'check' ? this.getStatus() : null;
     let data = {
       ...this.userTarget,

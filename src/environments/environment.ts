@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  BASE_PATH: 'http://localhost:11550/expenses',
-  // BASE_PATH: 'http://192.168.1.88:11550/expenses',
+  // BASE_PATH: 'http://localhost:11550/expenses',
+  BASE_PATH: 'http://192.168.1.88:11550/expenses',
   // BASE_PATH: 'http://192.168.137.84:11550/expenses',
 };
 

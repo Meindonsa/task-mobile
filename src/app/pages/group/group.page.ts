@@ -92,6 +92,12 @@ export class GroupPage implements OnInit {
     if (event.action == 'check') {
       this.changeProductStatus(event);
     }
+    if (event.action == 'delete') {
+      this.deleteProduct(event);
+    }
+    if (event.action == 'edit') {
+      this.editProduct(event);
+    }
   }
 
   changeProductStatus(view: any) {
@@ -102,7 +108,20 @@ export class GroupPage implements OnInit {
       : null;
   }
 
-  deleteProduct(view: any) {}
+  deleteProduct(event: any) {
+    let view = {
+      ...this.userTarget,
+      productNumber: event.product.productNumber,
+    };
+    let index = this.retrieveProductIndex(this.todo, event.product);
+    if (index > -1) {
+      this.todo = this.removeProduct(this.todo, event.product, 500);
+    } else {
+      index = this.retrieveProductIndex(this.done, event.product);
+      this.done = this.removeProduct(this.done, event.product, 500);
+    }
+    this.productService.deleteProdcut(view).subscribe();
+  }
 
   editProduct(view: any) {}
 

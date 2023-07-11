@@ -1,16 +1,19 @@
-<ion-item-sliding>
+<ion-item-sliding #slide>
   <ion-item [ngClass]="{ done: product.status == 'DONE' }">
-    <ion-checkbox slot="start" (ionChange)="slideEvent('check')"></ion-checkbox>
+    <ion-checkbox
+      slot="start"
+      (ionChange)="slideEvent('check', slide)"
+    ></ion-checkbox>
     <ion-label>{{ product.name }}</ion-label>
     <ion-text slot="end"
       ><small>{{ product.price }} Fcfa</small></ion-text
     >
   </ion-item>
   <ion-item-options>
-    <ion-item-option color="medium" (click)="slideEvent('edit')">
+    <ion-item-option color="medium" (click)="slideEvent('edit', slide)">
       <ion-icon name="pencil"></ion-icon>
     </ion-item-option>
-    <ion-item-option color="danger" (click)="slideEvent('delete')">
+    <ion-item-option color="danger" (click)="slideEvent('delete', slide)">
       <ion-icon name="trash"></ion-icon>
     </ion-item-option>
   </ion-item-options>
