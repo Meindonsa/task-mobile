@@ -21,4 +21,8 @@ export class ProfilePage implements OnInit {
   }
 
   updateProfilePicture(picture: any) {}
+
+  logout() {
+    this.authService.logout();
+  }
 }

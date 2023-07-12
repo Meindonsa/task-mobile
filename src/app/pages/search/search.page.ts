@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchPage implements OnInit {
   tasks: any = [];
+
   constructor() {}
 
   ngOnInit() {}

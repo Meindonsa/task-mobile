@@ -14,6 +14,7 @@ import {
   BellRing,
   FileText,
   Rotate3d,
+  Power,
   Bookmark,
 } from 'lucide-angular';
 
@@ -30,6 +31,7 @@ import {
       BellRing,
       FileText,
       Rotate3d,
+      Power,
       Bookmark,
     }),
   ],

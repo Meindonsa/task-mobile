@@ -5,6 +5,7 @@ import {
   File,
   Home,
   Menu,
+  Power,
   UserCheck,
 } from 'lucide-angular';
 
@@ -12,7 +13,7 @@ import {
   declarations: [],
   imports: [
     CommonModule,
-    LucideAngularModule.pick({ File, Home, Menu, UserCheck }),
+    LucideAngularModule.pick({ File, Home, Menu, Power, UserCheck }),
   ],
   exports: [],
 })

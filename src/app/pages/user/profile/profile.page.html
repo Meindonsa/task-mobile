@@ -54,11 +54,17 @@
         <lucide-icon name="FileText" slot="start"></lucide-icon>
         <ion-label>Conditions d'utilisation</ion-label>
       </ion-item>
-      <ion-item mode="ios" detail="true" button routerLink="/support">
+      <!-- <ion-item mode="ios" detail="true" button routerLink="/support">
         <span slot="start">
           <lucide-icon name="bookmark" [size]="20"></lucide-icon>
         </span>
         <ion-label>A propos</ion-label>
+      </ion-item> -->
+      <ion-item mode="ios" detail="true" button (click)="logout()">
+        <span slot="start">
+          <lucide-icon name="power" [size]="20" color="#ff0000"></lucide-icon>
+        </span>
+        <ion-label color="danger">Déconnexion</ion-label>
       </ion-item>
     </ion-list>
     <ion-card>
@@ -75,7 +81,9 @@
         Découvrez toutes nos applicatios, utilisez votre compte afin
         d'interchanger vos données d'une application à une autre.
         <br />
-        <a href="#" class="text-primary">Catalogue d'applications</a>
+        <a class="text-primary text-decoration-none"
+          >Catalogue d'applications</a
+        >
       </ion-card-content>
     </ion-card>
     <div class="text-center my-3">

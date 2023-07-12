@@ -13,7 +13,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {}
 
-  login() {
-    this.router.navigate(['profile']);
+  search() {
+    this.router.navigate(['search']);
   }
 }

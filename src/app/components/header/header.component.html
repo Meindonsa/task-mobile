@@ -1,8 +1,10 @@
-<ion-header collapse="fade">
+<ion-header collapse="fade" mode="ios">
   <ion-toolbar>
     <ion-title> {{ title }} </ion-title>
-    <ion-avatar slot="end" (click)="login()">
-      <img alt="Silhouette of a person's head" src="assets/image/avatar.svg" />
-    </ion-avatar>
+    <ion-buttons slot="end" (click)="search()">
+      <ion-button>
+        <ion-icon name="search-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
