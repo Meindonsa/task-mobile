@@ -1,8 +1,7 @@
 <ion-header collapse="condense" mode="ios">
   <ion-toolbar>
     <ion-button slot="start" fill="clear" (click)="back()">
-      <ion-icon name="arrow-back-outline"></ion-icon> Retour
-      <!-- <ion-back-button text="Retour"></ion-back-button> -->
+      <ion-icon name="arrow-back-outline"></ion-icon>
     </ion-button>
 
     <ion-title>{{group.name}}</ion-title>
@@ -91,13 +90,13 @@
             <ion-icon name="add-outline" slot="start" size="small"></ion-icon>
             Nouveau produit
           </ion-item>
-          <ion-item>
+          <ion-item [button]="true" [detail]="false" (click)="pinList()">
             <ion-icon
               name="pricetag-outline"
               slot="start"
               size="small"
             ></ion-icon>
-            Epingler
+            {{group.pin?"Désépingler":'Epingler'}}
           </ion-item>
           <ion-item
             [button]="true"

@@ -22,4 +22,11 @@ export class UtilService {
   isEmail(email: string) {
     return this.regEmail.test(email);
   }
+
+  retrieveProductIndex(list: any, product: any) {
+    let index = list.findIndex(
+      (item: any) => item.productNumber == product.productNumber
+    );
+    return index > -1 ? index : null;
+  }
 }

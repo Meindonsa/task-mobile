@@ -8,6 +8,8 @@ import {
 } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { NewArticlePage } from 'src/app/modal/new-article/new-article.page';
+import { UtilService } from 'src/app/services/common/util/util.service';
+import { ToastService } from 'src/app/services/common/toast/toast.service';
 
 @Component({
   selector: 'app-group',
@@ -24,7 +26,9 @@ export class GroupPage implements OnInit {
   user: any;
 
   constructor(
+    private utilService: UtilService,
     private authService: AuthService,
+    private toastService: ToastService,
     private navController: NavController,
     private productService: ProductService,
     private modalController: ModalController,
@@ -68,6 +72,7 @@ export class GroupPage implements OnInit {
         this.group = res;
         this.showProgressBar = false;
         this.divideProducts(this.group.products);
+        this.generateAmount();
       },
       error: () => {
         this.showProgressBar = false;
@@ -113,11 +118,11 @@ export class GroupPage implements OnInit {
       ...this.userTarget,
       productNumber: event.product.productNumber,
     };
-    let index = this.retrieveProductIndex(this.todo, event.product);
+    let index = this.utilService.retrieveProductIndex(this.todo, event.product);
     if (index > -1) {
       this.todo = this.removeProduct(this.todo, event.product, 500);
     } else {
-      index = this.retrieveProductIndex(this.done, event.product);
+      index = this.utilService.retrieveProductIndex(this.done, event.product);
       this.done = this.removeProduct(this.done, event.product, 500);
     }
     this.productService.deleteProdcut(view).subscribe();
@@ -148,7 +153,7 @@ export class GroupPage implements OnInit {
   removeProduct(list: any, product: any, time: number = 0) {
     let myList = list;
     setTimeout(() => {
-      let index = this.retrieveProductIndex(list, product);
+      let index = this.utilService.retrieveProductIndex(list, product);
       myList.splice(index, 1);
       this.generateAmount();
     }, time);
@@ -164,13 +169,6 @@ export class GroupPage implements OnInit {
     return myList;
   }
 
-  retrieveProductIndex(list: any, product: any) {
-    let index = list.findIndex(
-      (item: any) => item.productNumber == product.productNumber
-    );
-    return index > -1 ? index : null;
-  }
-
   async openAddProduct() {
     const modal = await this.modalController.create({
       component: NewArticlePage,
@@ -184,6 +182,23 @@ export class GroupPage implements OnInit {
 
     await modal.onWillDismiss().then((out) => {
       if (out.role == 'confirm') this.retrieveGroupDetail();
+    });
+  }
+
+  pinList() {
+    this.showProgressBar = true;
+    let view = this.userTarget;
+    this.group.pin = !this.group.pin;
+    this.expensesListService.pinTaskGroup(view, this.group.pin).subscribe({
+      next: () => {
+        this.showProgressBar = false;
+        this.toastService.successToast(
+          this.group.pin ? 'Liste épinglée' : 'List désépinglée'
+        );
+      },
+      error: () => {
+        this.showProgressBar = false;
+      },
     });
   }
 
@@ -210,6 +225,7 @@ export class GroupPage implements OnInit {
 
     await actionSheet.present();
   }
+
   back() {
     this.navController.navigateBack('groups', { state: { refresh: true } });
   }
