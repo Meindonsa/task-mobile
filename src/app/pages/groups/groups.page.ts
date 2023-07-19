@@ -31,11 +31,10 @@ export class GroupsPage implements OnInit {
 
   ionViewWillEnter() {
     this.retrieveExpensesList();
-    const state = history.state;
-    if (state.refresh) {
-      console.log(state);
-      this.retrieveExpensesList();
-    }
+    // const state = history.state;
+    // if (state.refresh) {
+    //   this.retrieveExpensesList();
+    // }
   }
 
   retrieveExpensesList() {

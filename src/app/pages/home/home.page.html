@@ -14,9 +14,15 @@
 
   <ion-list mode="ios" class="mt-3">
     <h6>Ajourd'hui</h6>
-    <app-task-element
-      *ngFor="let task of tasks"
-      [task]="task"
-    ></app-task-element>
+
+    <div class="text-center text-muted" *ngIf="products.length==0">
+      Aucun produit à acheter aujoud'hui
+    </div>
+    <div *ngIf="products.length>0">
+      <app-task-element
+        *ngFor="let task of products"
+        [task]="task"
+      ></app-task-element>
+    </div>
   </ion-list>
 </ion-content>

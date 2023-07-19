@@ -74,6 +74,7 @@ const routes: Routes = [
       },
       {
         path: 'groups',
+        data: { refresh: 'refresh' },
         loadChildren: () =>
           import('../pages/groups/groups.module').then(
             (m) => m.GroupsPageModule

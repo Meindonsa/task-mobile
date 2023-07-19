@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ExpensesListService } from '@spacelab-task/api';
+import { ExpensesListService, ProductService } from '@spacelab-task/api';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { TaskService } from 'src/app/services/tasks/task.service';
 
@@ -11,6 +11,7 @@ import { TaskService } from 'src/app/services/tasks/task.service';
 })
 export class HomePage implements OnInit {
   expensesLists: any = [];
+  products: any = [];
   today = new Date();
   folders: any = [];
   tasks: any = [];
@@ -20,6 +21,7 @@ export class HomePage implements OnInit {
     private router: Router,
     private taskService: TaskService,
     private authService: AuthService,
+    private productService: ProductService,
     private expensesListService: ExpensesListService
   ) {}
 
@@ -32,6 +34,7 @@ export class HomePage implements OnInit {
 
   ionViewWillEnter() {
     this.retrieveGroup();
+    this.retrieveDayProducts();
   }
 
   retrieveGroup() {
@@ -42,5 +45,14 @@ export class HomePage implements OnInit {
           this.expensesLists = response;
         },
       });
+  }
+
+  retrieveDayProducts() {
+    this.products = [];
+    this.productService.retrieveDailyProducts(this.user.userName).subscribe({
+      next: (response: any) => {
+        this.products = response;
+      },
+    });
   }
 }

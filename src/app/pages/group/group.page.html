@@ -86,7 +86,11 @@
     <ng-template>
       <ion-content>
         <ion-list>
-          <ion-item [button]="true" [detail]="false" (click)="openAddProduct()">
+          <ion-item
+            [button]="true"
+            [detail]="false"
+            (click)="openAddProduct(null)"
+          >
             <ion-icon name="add-outline" slot="start" size="small"></ion-icon>
             Nouveau produit
           </ion-item>

@@ -101,7 +101,7 @@ export class GroupPage implements OnInit {
       this.deleteProduct(event);
     }
     if (event.action == 'edit') {
-      this.editProduct(event);
+      this.openAddProduct(event.product);
     }
   }
 
@@ -128,7 +128,9 @@ export class GroupPage implements OnInit {
     this.productService.deleteProdcut(view).subscribe();
   }
 
-  editProduct(view: any) {}
+  editProduct(view: any) {
+    console.log(view);
+  }
 
   doneProduct(view: any) {
     this.todo = this.removeProduct(this.todo, view.product, 500);
@@ -169,11 +171,12 @@ export class GroupPage implements OnInit {
     return myList;
   }
 
-  async openAddProduct() {
+  async openAddProduct(product: any) {
     const modal = await this.modalController.create({
       component: NewArticlePage,
       componentProps: {
         expensesListNumber: this.group.expensesListNumber,
+        product: product,
       },
       initialBreakpoint: 0.7,
       breakpoints: [0, 0.7, 0.7],
