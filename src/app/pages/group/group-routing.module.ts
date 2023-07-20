@@ -6,8 +6,8 @@ import { GroupPage } from './group.page';
 const routes: Routes = [
   {
     path: '',
-    component: GroupPage
-  }
+    component: GroupPage,
+  },
 ];
 
 @NgModule({
