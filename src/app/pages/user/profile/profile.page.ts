@@ -15,8 +15,7 @@ export class ProfilePage implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private imagesService: ImagesService,
-    private loaderService: LoaderService
+    private imagesService: ImagesService
   ) {}
 
   ngOnInit() {
