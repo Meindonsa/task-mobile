@@ -96,4 +96,8 @@ export class AuthService {
   resetPassword(data: any) {
     return this.userService.resetPassword(data);
   }
+
+  updateProfilePhoto(view: any) {
+    return this.userService.updateProfilePhoto(view);
+  }
 }

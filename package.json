@@ -50,7 +50,7 @@
     "@angular/language-service": "^15.0.0",
     "@capacitor/cli": "^5.0.0",
     "@ionic/angular-toolkit": "^9.0.0",
-    "@spacelab-task/api": "file:../task-library/release/spacelab-task-api-0.0.8.tgz",
+    "@spacelab-task/api": "file:../task-library/release/spacelab-task-api-0.0.9.tgz",
     "@types/jasmine": "~4.0.0",
     "@types/lz-string": "^1.5.0",
     "@types/node": "^12.11.1",
