@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '@spacelab-task/api';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { ImagesService } from 'src/app/services/common/images/images.service';
-import { LoaderService } from 'src/app/services/common/loader/loader.service';
 
 @Component({
   selector: 'app-profile',
