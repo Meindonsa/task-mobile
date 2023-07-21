@@ -37,7 +37,10 @@
             >Se connecter</ion-button
           >
         </div>
-        <div class="text-center">
+        <div
+          class="text-center animate__animated animate__fadeInUp"
+          *ngIf="keyboardHidden"
+        >
           <span routerLink="/register"
             >Nouveau chez nous ? Créez un compte</span
           >

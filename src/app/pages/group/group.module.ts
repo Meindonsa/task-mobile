@@ -8,6 +8,7 @@ import { GroupPageRoutingModule } from './group-routing.module';
 
 import { GroupPage } from './group.page';
 import { ComponentModule } from 'src/app/components/component.module';
+import { LucideAngularModule, LayoutList } from 'lucide-angular';
 
 @NgModule({
   imports: [
@@ -16,6 +17,9 @@ import { ComponentModule } from 'src/app/components/component.module';
     IonicModule,
     ComponentModule,
     GroupPageRoutingModule,
+    LucideAngularModule.pick({
+      LayoutList,
+    }),
   ],
   declarations: [GroupPage],
 })

@@ -6,6 +6,7 @@ import { GroupsPage } from './groups.page';
 
 import { GroupsPageRoutingModule } from './groups-routing.module';
 import { ComponentModule } from 'src/app/components/component.module';
+import { LucideAngularModule, ClipboardCheck } from 'lucide-angular';
 
 @NgModule({
   imports: [
@@ -14,6 +15,9 @@ import { ComponentModule } from 'src/app/components/component.module';
     FormsModule,
     GroupsPageRoutingModule,
     ComponentModule,
+    LucideAngularModule.pick({
+      ClipboardCheck,
+    }),
   ],
   declarations: [GroupsPage],
 })

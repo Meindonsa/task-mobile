@@ -4,10 +4,27 @@
   <app-progress-bar [showProgressBar]="showProgressBar"></app-progress-bar>
   <ion-refresher
     slot="fixed"
-    (ionRefresh)="handleRefresh($event)"
     pull-min="15"
+    [disabled]="expensesLists.length==0"
+    (ionRefresh)="handleRefresh($event)"
   >
   </ion-refresher>
+  <div
+    class="d-flex justify-content-center align-items-center h-100"
+    *ngIf="expensesLists.length==0"
+  >
+    <div class="text-center">
+      <div class="icon-container">
+        <lucide-icon
+          name="clipboard-check"
+          [strokeWidth]="1"
+          color="#8c034e"
+          [size]="125"
+        ></lucide-icon>
+      </div>
+      <div>Aucune liste.</div>
+    </div>
+  </div>
   <ion-card
     mode="ios"
     *ngFor="let expensesList of expensesLists"

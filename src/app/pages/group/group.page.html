@@ -39,7 +39,24 @@
       </ion-textarea>
     </div>
 
-    <div class="article-list-container">
+    <div
+      class="d-flex justify-content-center align-items-center h-100 py-5"
+      *ngIf="done.length==0 && todo.length==0"
+    >
+      <div class="text-center">
+        <div class="icon-container">
+          <lucide-icon
+            name="layout-list"
+            [strokeWidth]="1"
+            color="#8c034e"
+            [size]="125"
+          ></lucide-icon>
+        </div>
+        <div>Aucune liste.</div>
+      </div>
+    </div>
+
+    <div class="article-list-container" *ngIf="done.length>0 || todo.length>0 ">
       <div class="list-min-height">
         <ion-list mode="ios" class="animate__animated animate__fadeInUp mt-3">
           <ion-list-header>
@@ -82,18 +99,16 @@
     </div>
   </div>
 
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button size="small" (click)="openAddProduct(null)">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
   <ion-popover trigger="options" [dismissOnSelect]="true">
     <ng-template>
       <ion-content>
         <ion-list>
-          <ion-item
-            [button]="true"
-            [detail]="false"
-            (click)="openAddProduct(null)"
-          >
-            <ion-icon name="add-outline" slot="start" size="small"></ion-icon>
-            Nouveau produit
-          </ion-item>
           <ion-item [button]="true" [detail]="false" (click)="pinList()">
             <ion-icon
               name="pricetag-outline"

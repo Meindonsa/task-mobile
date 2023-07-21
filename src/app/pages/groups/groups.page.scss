@@ -1,3 +1,13 @@
+div.icon-container {
+  width: 150px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: #ededed;
+}
+
 ion-card {
   ion-col.logoConainer {
     display: flex;
