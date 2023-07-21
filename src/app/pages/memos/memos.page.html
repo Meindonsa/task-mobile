@@ -31,20 +31,17 @@
     mode="ios"
     *ngFor="let memo of memos"
     (click)="openMemo(memo)"
-    class="animate__animated animate__fadeInUp"
+    class="animate__animated animate__fadeInUp px-3 py-2"
   >
-    <ion-row>
-      <ion-col size="2" class="logoConainer">
-        <ion-icon name="folder-open-outline" size="large"></ion-icon>
-      </ion-col>
-      <ion-col size="9">
-        <ion-card-subtitle>{{memo?.title}}</ion-card-subtitle>
-        <span class="truncat-description">{{memo?.content}}</span>
-        <!-- <div class="d-flex justify-content-end mt-1">
-          <ion-text><strong>{{expensesList?.amount}} Fcfa</strong></ion-text>
-        </div> -->
-      </ion-col>
-    </ion-row>
+    <ion-card-subtitle>{{memo?.title}}</ion-card-subtitle>
+    <span class="truncat-description">{{memo?.content}}</span>
+    <div class="d-flex justify-content-end">
+      <ion-text>
+        <small>
+          <strong>{{memo?.lastUpdateDate | date:'shortDate'}}</strong>
+        </small>
+      </ion-text>
+    </div>
   </ion-card>
 
   <ion-fab slot="fixed" vertical="bottom" horizontal="end">

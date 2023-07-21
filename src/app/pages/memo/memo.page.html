@@ -1,13 +1,42 @@
-<ion-header [translucent]="true">
+<ion-header collapse="condense" mode="ios">
   <ion-toolbar>
-    <ion-title>Memo</ion-title>
+    <ion-button slot="start" fill="clear" (click)="back()">
+      <ion-icon name="arrow-back-outline"></ion-icon>
+    </ion-button>
+
+    <ion-title>{{memo.title || 'Nouveau mémo'}}</ion-title>
+
+    <ion-buttons slot="end" (click)="canDeleteMemo()">
+      <ion-icon name="trash-outline" color="danger" class="me-3"></ion-icon>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Memo</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="px-2">
+    <div class="input">
+      <ion-item class="mb-5">
+        <ion-input
+          mode="ios"
+          size="small"
+          [debounce]="500"
+          [(ngModel)]="memo.title"
+          (ionChange)="onChange()"
+          placeholder="Titre"
+        ></ion-input>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-textarea
+          mode="ios"
+          [counter]="true"
+          [debounce]="500"
+          [autoGrow]="true"
+          (ionChange)="onChange()"
+          [(ngModel)]="memo.content"
+          placeholder="Description"
+        >
+        </ion-textarea>
+      </ion-item>
+    </div>
+  </div>
 </ion-content>

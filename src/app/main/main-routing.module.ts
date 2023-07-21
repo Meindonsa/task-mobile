@@ -89,6 +89,7 @@ const routes: Routes = [
       },
       {
         path: 'memos',
+        data: { refresh: 'refresh' },
         loadChildren: () =>
           import('../pages/memos/memos.module').then((m) => m.MemosPageModule),
       },

@@ -14,6 +14,7 @@ import { environment } from 'src/environments/environment';
 import {
   BASE_PATH,
   ExpensesListService,
+  MemoService,
   ProductService,
   UserService,
 } from '@spacelab-task/api';
@@ -31,6 +32,7 @@ registerLocaleData(localeFr, 'fr');
     UserService,
     ExpensesListService,
     ProductService,
+    MemoService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     { provide: LOCALE_ID, useValue: 'fr' },
     {
