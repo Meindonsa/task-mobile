@@ -15,9 +15,14 @@ import { ModalAnimationService } from 'src/app/services/common/animation/modal-a
 })
 export class MemosPage implements OnInit {
   showProgressBar = false;
+  canRefresh = null;
   memos: any = [];
   user: any;
-  canRefresh = null;
+  memo: any = {
+    title: '',
+    content: '',
+    memoNumber: null,
+  };
 
   constructor(
     private router: Router,

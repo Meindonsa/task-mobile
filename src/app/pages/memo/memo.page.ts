@@ -12,6 +12,7 @@ export class MemoPage implements OnInit {
   memo: any = {
     title: '',
     content: '',
+    memoNumber: null,
   };
   user: any;
   canRefresh = false;
