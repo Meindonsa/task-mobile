@@ -142,3 +142,13 @@ ion-checkbox::part(container) {
 ion-item.done {
   color: #d9d9d9;
 }
+
+div.no-icon-container {
+  width: 150px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: #ededed;
+}

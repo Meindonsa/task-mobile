@@ -1,34 +1,36 @@
-<app-header [title]="'Groupes'"></app-header>
+<app-header [title]="'memos'"></app-header>
 
-<ion-content>
+<ion-content [fullscreen]="true">
   <app-progress-bar [showProgressBar]="showProgressBar"></app-progress-bar>
   <ion-refresher
     slot="fixed"
     pull-min="15"
-    [disabled]="expensesLists.length==0"
+    [disabled]="memos.length==0"
     (ionRefresh)="handleRefresh($event)"
   >
   </ion-refresher>
+
   <div
     class="d-flex justify-content-center align-items-center h-100"
-    *ngIf="expensesLists.length==0"
+    *ngIf="memos.length==0"
   >
     <div class="text-center">
       <div class="no-icon-container">
         <lucide-icon
-          name="clipboard-check"
+          name="sticky-note"
           [strokeWidth]="1"
           color="#8c034e"
           [size]="125"
         ></lucide-icon>
       </div>
-      <div>Aucune liste.</div>
+      <div>Aucun mémo.</div>
     </div>
   </div>
+
   <ion-card
     mode="ios"
-    *ngFor="let expensesList of expensesLists"
-    (click)="showDetails(expensesList)"
+    *ngFor="let memo of memos"
+    (click)="openMemo(memo)"
     class="animate__animated animate__fadeInUp"
   >
     <ion-row>
@@ -36,20 +38,17 @@
         <ion-icon name="folder-open-outline" size="large"></ion-icon>
       </ion-col>
       <ion-col size="9">
-        <ion-card-subtitle>{{expensesList?.name}}</ion-card-subtitle>
-        <span class="truncat-description">{{expensesList?.description}}</span>
-        <div class="d-flex justify-content-end mt-1">
+        <ion-card-subtitle>{{memo?.title}}</ion-card-subtitle>
+        <span class="truncat-description">{{memo?.content}}</span>
+        <!-- <div class="d-flex justify-content-end mt-1">
           <ion-text><strong>{{expensesList?.amount}} Fcfa</strong></ion-text>
-        </div>
+        </div> -->
       </ion-col>
     </ion-row>
-    <ion-progress-bar
-      [value]="getPercentage(expensesList?.percentage)"
-    ></ion-progress-bar>
   </ion-card>
 
   <ion-fab slot="fixed" vertical="bottom" horizontal="end">
-    <ion-fab-button size="small" (click)="openAddFolder()">
+    <ion-fab-button size="small" (click)="openMemo(null)">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>

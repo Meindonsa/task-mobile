@@ -63,6 +63,13 @@ const routes: Routes = [
         (m) => m.NewGroupPageModule
       ),
   },
+
+  {
+    path: 'memo',
+    data: { memo: 'memo' },
+    loadChildren: () =>
+      import('../pages/memo/memo.module').then((m) => m.MemoPageModule),
+  },
   {
     path: '',
     component: MainPage,
@@ -79,6 +86,11 @@ const routes: Routes = [
           import('../pages/groups/groups.module').then(
             (m) => m.GroupsPageModule
           ),
+      },
+      {
+        path: 'memos',
+        loadChildren: () =>
+          import('../pages/memos/memos.module').then((m) => m.MemosPageModule),
       },
       {
         path: 'notifications',
