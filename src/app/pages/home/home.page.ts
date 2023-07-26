@@ -39,7 +39,7 @@ export class HomePage implements OnInit {
 
   retrieveGroup() {
     this.expensesListService
-      .retrieveUserTaskGroups(this.user.userName)
+      .retrieveUserTaskGroupsPined(this.user.userName)
       .subscribe({
         next: (response) => {
           this.expensesLists = response;
