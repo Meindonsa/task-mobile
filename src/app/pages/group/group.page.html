@@ -41,7 +41,7 @@
 
     <div
       class="d-flex justify-content-center align-items-center h-100 py-5"
-      *ngIf="done.length==0 && todo.length==0"
+      *ngIf="products.length==0"
     >
       <div class="text-center">
         <div class="no-icon-container">
@@ -56,38 +56,34 @@
       </div>
     </div>
 
-    <div class="article-list-container" *ngIf="done.length>0 || todo.length>0 ">
+    <div class="article-list-container" *ngIf="products.length > 0">
+      <ion-segment value="TODO" mode="ios" (ionChange)="changeSegment($event)">
+        <ion-segment-button value="TODO" mode="ios">
+          <ion-label mode="ios">En cours</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="DONE">
+          <ion-label>Terminé</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+
       <div class="list-min-height">
         <ion-list mode="ios" class="animate__animated animate__fadeInUp mt-3">
-          <ion-list-header>
-            <ion-label class="d-flex justify-content-between"
-              ><span>En cours</span>
-              <small class="text-primary"> {{amount}} FCFA </small></ion-label
-            >
+          <ion-list-header mode="ios">
+            <ion-label class="d-flex justify-content-end" mode="ios">
+              <small class="text-primary"> {{amount}} FCFA </small>
+            </ion-label>
           </ion-list-header>
-          <ion-item *ngIf="todo.length==0" lines="none" class="text-center">
-            <ion-label class="text-muted"> Vous avez tout acheter ! </ion-label>
-          </ion-item>
-          <div *ngFor="let item of todo">
-            <app-task-element
-              [task]="item"
-              [userTarget]="userTarget"
-              (productChanged)="receiveChanging($event)"
-            ></app-task-element>
-          </div>
-        </ion-list>
-      </div>
-      <div class="list-min-height">
-        <ion-list class="animate__animated animate__fadeInUp">
-          <ion-list-header lines="inset">
-            <ion-label mode="ios">Achetés</ion-label>
-          </ion-list-header>
-          <ion-item *ngIf="done.length==0" lines="none" class="text-center">
-            <ion-label class="text-muted">
-              Vous n'avez encore rien acheter !
+          <ion-item
+            *ngIf="products.length==0"
+            lines="none"
+            class="text-center"
+            mode="ios"
+          >
+            <ion-label class="text-muted" mode="ios">
+              Vous avez tout acheter !
             </ion-label>
           </ion-item>
-          <div *ngFor="let item of done">
+          <div *ngFor="let item of products">
             <app-task-element
               [task]="item"
               [userTarget]="userTarget"

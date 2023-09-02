@@ -18,6 +18,8 @@ import { ToastService } from 'src/app/services/common/toast/toast.service';
 })
 export class GroupPage implements OnInit {
   showProgressBar = false;
+  status: any = 'TODO';
+  products: any = [];
   userTarget: any;
   done: any = [];
   todo: any = [];
@@ -42,7 +44,7 @@ export class GroupPage implements OnInit {
     const state = history.state;
     if (state.list != null) {
       this.group = state['list'];
-      this.retrieveGroupDetail();
+      this.retrieveGroupDetail(this.status);
     }
     this.userTarget = {
       userName: this.user.userName,
@@ -53,25 +55,24 @@ export class GroupPage implements OnInit {
 
   generateAmount() {
     this.amount = 0;
-    this.todo.forEach((item: any) => {
+    this.products.forEach((item: any) => {
       this.amount += item.price;
     });
     this.group.amount = this.amount;
   }
 
-  retrieveGroupDetail() {
-    this.done = [];
-    this.todo = [];
+  retrieveGroupDetail(status: any) {
     this.showProgressBar = true;
     let view = {
       userName: this.user.userName,
       targetNumber: this.group.expensesListNumber,
+      status: status,
     };
     this.expensesListService.retrieveTaskGroupDetail(view).subscribe({
       next: (res) => {
         this.group = res;
         this.showProgressBar = false;
-        this.divideProducts(this.group.products);
+        this.products = res.products;
         this.generateAmount();
       },
       error: () => {
@@ -86,11 +87,9 @@ export class GroupPage implements OnInit {
     this.expensesListService.updateTaskGroup(view).subscribe();
   }
 
-  divideProducts(products: any[]) {
-    products.forEach((item) => {
-      if (item.status == 'TODO') this.todo.push(item);
-      if (item.status == 'DONE') this.done.push(item);
-    });
+  changeSegment(event: any) {
+    this.retrieveGroupDetail(event.detail.value);
+    this.status = event.detail.value;
   }
 
   receiveChanging(event: any) {
@@ -106,11 +105,8 @@ export class GroupPage implements OnInit {
   }
 
   changeProductStatus(view: any) {
-    view.status == 'DONE'
-      ? this.doneProduct(view)
-      : view.status == 'TODO'
-      ? this.todoProduct(view)
-      : null;
+    this.products = this.removeProduct(this.products, view.product, 500);
+    this.changeStatus(view);
   }
 
   deleteProduct(event: any) {
@@ -118,32 +114,18 @@ export class GroupPage implements OnInit {
       ...this.userTarget,
       productNumber: event.product.productNumber,
     };
-    let index = this.utilService.retrieveProductIndex(this.todo, event.product);
+    let index = this.utilService.retrieveProductIndex(
+      this.products,
+      event.product
+    );
     if (index > -1) {
-      this.todo = this.removeProduct(this.todo, event.product, 500);
-    } else {
-      index = this.utilService.retrieveProductIndex(this.done, event.product);
-      this.done = this.removeProduct(this.done, event.product, 500);
+      this.products = this.removeProduct(this.products, event.product, 500);
+      this.productService.deleteProdcut(view).subscribe();
     }
-    this.productService.deleteProdcut(view).subscribe();
   }
 
   editProduct(view: any) {
     console.log(view);
-  }
-
-  doneProduct(view: any) {
-    this.todo = this.removeProduct(this.todo, view.product, 500);
-    view.product.status = 'DONE';
-    this.done = this.addProduct(this.done, view.product, 600);
-    this.changeStatus(view);
-  }
-
-  todoProduct(view: any) {
-    this.done = this.removeProduct(this.done, view.product, 500);
-    view.product.status = 'TODO';
-    this.todo = this.addProduct(this.todo, view.product, 600);
-    this.changeStatus(view);
   }
 
   changeStatus(view: any) {
@@ -184,7 +166,7 @@ export class GroupPage implements OnInit {
     modal.present();
 
     await modal.onWillDismiss().then((out) => {
-      if (out.role == 'confirm') this.retrieveGroupDetail();
+      if (out.role == 'confirm') this.retrieveGroupDetail(this.status);
     });
   }
 
