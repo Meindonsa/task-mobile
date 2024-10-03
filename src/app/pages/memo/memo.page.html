@@ -26,7 +26,7 @@
         ></ion-input>
       </ion-item>
       <ion-item lines="none">
-        <ion-textarea
+        <!-- <ion-textarea
           mode="ios"
           [counter]="true"
           [debounce]="500"
@@ -35,7 +35,8 @@
           [(ngModel)]="memo.content"
           placeholder="Description"
         >
-        </ion-textarea>
+        </ion-textarea> -->
+        <quill-editor> </quill-editor>
       </ion-item>
     </div>
   </div>

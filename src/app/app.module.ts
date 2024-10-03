@@ -18,8 +18,21 @@ import {
   ProductService,
   UserService,
 } from '@spacelab-task/api';
+import { QuillModule, QuillModules } from 'ngx-quill';
 registerLocaleData(localeFr, 'fr');
 
+const modules: QuillModules = {
+  toolbar: [
+    ['bold', 'italic', 'underline', 'strick'],
+    // ['blockquote', 'code-block'],
+    // [{ header: 1 }, { header: 2 }],
+    [{ list: 'ordered' }, { list: 'bullet' }],
+    [{ header: [1, 2, 3, 4, 5, 6, false] }],
+    // [{ color: [] }, { background: [] }],
+    // [{ font: [] }],
+    // [{ align: [] }],
+  ],
+};
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -27,6 +40,11 @@ registerLocaleData(localeFr, 'fr');
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
+    QuillModule.forRoot({
+      format: 'html',
+      modules,
+      placeholder: 'Ecrivez quelque chose...',
+    }),
   ],
   providers: [
     UserService,
